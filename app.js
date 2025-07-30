@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8081;
 //_________________________Code Implanted By Maher Zubair_________________________//
 // Connect MongoDB
 mongoose.set("strictQuery", false);
-const mongoUri = process.env.MONGO_URI || 'mongodb+srv://salman:ahmad@cluster0.gjslz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const mongoUri = process.env.MONGO_URI || 'mongodb+srv://empirepayvtu:RlvcZqk7qw4SMuZf@mainbotly.9rdhozz.mongodb.net/?retryWrites=true&w=majority&appName=mainbotly';
 
 mongoose.connect(mongoUri)
     .then(() => {
@@ -70,7 +70,7 @@ cron.schedule(
     },
     {
         scheduled: true,
-        timezone: "Asia/Karachi",
+        timezone: "Africa/Lagos",
     }
 );
 
@@ -151,8 +151,8 @@ app.use(cors(corsOptions));
 
 app.use((err, req, res, next) => {
     res.status(500).json({
-        Founder: "AHMMI-KUN",
-        company: "Xlicon Botz Inc",
+        Founder: "Empire Tech",
+        company: "Empire Tech Inc",
         data: {
             status: false,
             message: err.message || 'Internal Server Error',
