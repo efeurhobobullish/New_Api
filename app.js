@@ -21,23 +21,22 @@ mongoose.connect(mongoUri)
     });
 
 // Count Visitors
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+    try {
+        const pagesToCount = ['/', '/downloader'];
+        const urlPath = req.url;
 
-    const pagesToCount = ['/', '/downloader'];
-
-    const urlPath = req.url;
-
-    if (pagesToCount.includes(urlPath)) {
-        webStates.findOneAndUpdate(
-            {},
-            { $inc: { visitors: 1 } },
-            { upsert: true, new: true },
-            (err, doc) => {
-                if (err) {
-                    console.error('Error updating visitor count:', err);
-                }
-            }
-        );
+        if (pagesToCount.includes(urlPath)) {
+            // Mongoose v7+ -> no callbacks, use promise/async
+            await webStates.findOneAndUpdate(
+                {},
+                { $inc: { visitors: 1 } },
+                { upsert: true, new: true }
+            );
+        }
+    } catch (err) {
+        // Log but do not block the request
+        console.error('Error updating visitor count:', err);
     }
 
     next();
@@ -52,16 +51,25 @@ async function requestsCount() {
     }
 }
 const countMiddleware = async (req, res, next) => {
-    if (req.path.startsWith('/api')) {
-        await requestsCount();
+    try {
+        if (req.path.startsWith('/api')) {
+            await requestsCount();
+        }
+    } catch (err) {
+        console.error('Error in countMiddleware:', err);
+        // continue anyway
     }
     next();
 };
 
 // Reset Today Requests
 async function ResetRequestToday() {
-    await webStates.updateOne({}, { todayRequests: 0 });
-    console.log("REQUESTS TODAY RESET SUCCESSFULLY");
+    try {
+        await webStates.updateOne({}, { todayRequests: 0 });
+        console.log("REQUESTS TODAY RESET SUCCESSFULLY");
+    } catch (err) {
+        console.error("Failed to reset today's requests:", err);
+    }
 }
 cron.schedule(
     "0 0 * * *",
@@ -95,7 +103,6 @@ const newsRoutes = require('./routes/newsRoutes');
 const animeRoutes = require('./routes/animeRoutes');
 const detailRoutes = require('./routes/detailRoutes');
 const statistics = require('./routes/main')
-
 
 //======================== API Routes ============================
 app.use('/api/details', detailRoutes);
@@ -144,7 +151,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 */
 
 //======================== Error Handler ============================
