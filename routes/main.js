@@ -30,8 +30,8 @@ router.get('/web/statistics', async (req, res) => {
         const {visitors, totalRequests, todayRequests} = webDB
 
         return res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Inc",
             user_info: {
                 ip: result.ip,
                 location: `${result.city}, ${result.region}, ${result.country}`,
