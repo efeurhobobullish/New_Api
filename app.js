@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8081;
 //_________________________Code Implanted By Maher Zubair_________________________//
 // Connect MongoDB
 mongoose.set("strictQuery", false);
-const mongoUri = process.env.MONGO_URI || 'mongodb+srv://empirepayvtu:RlvcZqk7qw4SMuZf@mainbotly.9rdhozz.mongodb.net/?retryWrites=true&w=majority&appName=mainbotly';
+const mongoUri = process.env.MONGO_URI || 'mongodb+srv://switmatchbot:mJIRplLpQ6pDgzec@swiftmatchbot.8uhs1yo.mongodb.net/?appName=SwiftMatchBot';
 
 mongoose.connect(mongoUri)
     .then(() => {
