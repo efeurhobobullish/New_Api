@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>AHMMI APIS</title>
@@ -33,33 +34,38 @@
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" type="text/css"
     media="all" />
   <style>
-    /* Add your custom animations here */
-
-    .loading-text {
-      animation: shake 2s infinite;
+    /* --- NEW NEAT SPINNER --- */
+    .neat-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      /* Light grey */
+      border-top: 5px solid #0d6efd;
+      /* Blue */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto 0 auto;
+      /* Centered it below the logo */
     }
 
-    @keyframes shake {
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
 
-      0%,
       100% {
-        transform: translateX(0);
+        transform: rotate(360deg);
       }
+    }
 
-      10%,
-      30%,
-      50%,
-      70%,
-      90% {
-        transform: translateX(-10px);
-      }
-
-      20%,
-      40%,
-      60%,
-      80% {
-        transform: translateX(10px);
-      }
+    /* --- NEW LOADER IMAGE STYLE --- */
+    .loader-logo img {
+      border-radius: 50% !important; /* Make it a circle */
+      width: 120px;   /* Fixed width */
+      height: 120px;  /* Fixed height */
+      object-fit: cover; /* Prevent stretching */
+      border: 4px solid #fff; /* Neat white border */
+      box-shadow: 0 0 15px rgba(0,0,0,0.1); /* Soft shadow */
     }
   </style>
 </head>
@@ -68,11 +74,7 @@
     <div class="loader-logo">
       <img src="https://i.ibb.co/c8JJBZZ/peakpx-2.jpg" alt="Gojo Kun" />
     </div>
-    <div class="loader-progress" id="progress_div">
-      <div class="bar" id="bar1"></div>
-    </div>
-    <div class="percent" id="percent1">0%</div>
-    <div class="loading-text">preparing endpoints...</div>
+    <div class="neat-spinner"></div>
   </div>
 </div>
 
@@ -161,14 +163,11 @@
             <span>Detail </span>
           </a>
 
-        
           <a class="nav-link collapsed" href="/misc">
             <i class="bi bi-box">
             </i>
             <span>Misc </span>
           </a>
-
-         
 
           <a class="nav-link collapsed" href="/converter">
             <i class="bi bi-calculator">
@@ -208,7 +207,6 @@
 
         </li>
 
-
         <li class="nav-heading">Contact</li>
         <li class="nav-item">
           <a class="nav-link collapsed" href="https://wa.me/923184070915" target="_blank">
@@ -223,7 +221,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="https://whatsapp.com/channel/0029VaINgEZK0IBaK1nDtE3f"  target="_blank" >
+          <a class="nav-link collapsed" href="https://whatsapp.com/channel/0029VaINgEZK0IBaK1nDtE3f" target="_blank">
             <i class="bi bi-exclamation-lg"></i>
             <span>Support channel</span>
           </a>
@@ -237,7 +235,7 @@
           <div class="row">
             <div class="content-wrapper text-center col-xxl-4 col-xl-12">
             </div>
-            
+
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
                 <div class="card-body">
@@ -255,7 +253,6 @@
                 </div>
               </div>
             </div>
-
 
             <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
@@ -275,8 +272,7 @@
               </div>
             </div>
 
-
-            <div class="col-xxl-4 col-xl-6">
+            <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
                 <div class="card-body">
                   <h5 class="card-title">Total Request</h5>
@@ -294,8 +290,7 @@
               </div>
             </div>
 
-
-            <div class="col-xxl-4 col-xl-6">
+            <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
                 <div class="card-body">
                   <h5 class="card-title">Today's Request</h5>
@@ -313,9 +308,7 @@
               </div>
             </div>
 
-
-            <!-- User Information and IP Section -->
-            <div class="col-xxl-4 col-xl-6">
+            <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
                 <div class="card-body">
                   <h5 class="card-title">User Info</h5>
@@ -333,8 +326,7 @@
               </div>
             </div>
 
-            <!-- System Info Section -->
-            <div class="col-xxl-4 col-xl-6">
+            <div class="col-xxl-4 col-md-6">
               <div class="card info-card">
                 <div class="card-body">
                   <h5 class="card-title">System Info</h5>
@@ -351,27 +343,27 @@
                 </div>
               </div>
             </div>
-          </div>
 
-           <div class="col-xxl-4 col-xl-6">
-            <div class="card info-card">
-              <div class="card-body">
-                <h5 class="card-title">Battery</h5>
-                <div class="d-flex align-items-center">
-                  <div
-                    class="card-icon alert alert-info rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-eye"></i>
-                  </div>
-                  <div class="ps-3">
-                    <div class="weight-700 font-24 text-dark" id="batteryLevel">Loading...</div>
-                    <div class="font-14 text-secondary weight-500">Your Battery Level</div>
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card">
+                <div class="card-body">
+                  <h5 class="card-title">Battery</h5>
+                  <div class="d-flex align-items-center">
+                    <div
+                      class="card-icon alert alert-info rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-battery-charging"></i>
+                    </div>
+                    <div class="ps-3">
+                      <div class="weight-700 font-24 text-dark" id="batteryLevel">Loading...</div>
+                      <div class="font-14 text-secondary weight-500">Your Battery Level</div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-
+          </div> </div>
+      </div>
     </section>
   </main>
 
@@ -398,8 +390,6 @@
   </section>
   </main>
 
-
-
   <footer id="footer" class="footer">
     <div class="copyright">
       &copy; Copyright
@@ -410,11 +400,9 @@
     </div>
   </footer>
 
-
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
     <i class="bi bi-arrow-up-short"></i>
   </a>
-
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://ferdiz-afk.github.io/Nice/assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -427,12 +415,10 @@
   <script src="https://ferdiz-afk.github.io/Nice/assets/vendor/php-email-form/validate.js"></script>
   <script src="https://ferdiz-afk.github.io/Nice/assets/js/main.js"></script>
 
-
   <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
     data-id="ahmmikun" data-description="Support me on Buy me a coffee!"
     data-message="You can donate me by buying me a coffee..." data-color="#5F7FFF" data-position="Right"
     data-x_margin="18" data-y_margin="18"></script>
-
 
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://dropways.github.io/deskapp/vendors/scripts/core.js"></script>
@@ -446,24 +432,38 @@
   <script src="https://dropways.github.io/deskapp/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
   <script src="https://dropways.github.io/deskapp/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 
-
-
   <script>
-//all funtions     
+    //all funtions    
     let textElement = document.querySelector('div#browser_info');
     let greetingElement = document.querySelector('div#browser_sholat');
 
     setInterval(() => {
       const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
+
+      // --- Original 24-hour calculation for greeting function ---
+      const hours24 = now.getHours().toString().padStart(2, '0');
+      const minutes24 = now.getMinutes().toString().padStart(2, '0');
+      const seconds24 = now.getSeconds().toString().padStart(2, '0');
+      const timeString24 = `${hours24}:${minutes24}:${seconds24}`;
+
+      // --- New 12-hour calculation for display ---
+      let hours = now.getHours();
       const minutes = now.getMinutes().toString().padStart(2, '0');
       const seconds = now.getSeconds().toString().padStart(2, '0');
-      const timeString = `${hours}:${minutes}:${seconds}`;
+      const ampm = hours >= 12 ? 'PM' : 'AM';
 
-      const greeting = getGreeting(timeString);
+      hours = hours % 12;
+      hours = hours ? hours : 12; // The hour '0' should be '12'
+      const hoursString = hours.toString().padStart(2, '0'); // Pad with '0'
 
+      const timeString12 = `${hoursString}:${minutes}:${seconds} ${ampm}`;
+
+      // --- Use 24-hour string for greeting logic ---
+      const greeting = getGreeting(timeString24);
+
+      // --- Update elements ---
       greetingElement.innerHTML = greeting;
-      textElement.innerHTML = timeString;
+      textElement.innerHTML = timeString12; // Display 12-hour format
     }, 250);
 
     function getGreeting(currentTime) {
@@ -527,11 +527,11 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-  getUserInfo();
-  getSystemInfo();
-  getWebStates();
-});
+    document.addEventListener('DOMContentLoaded', function () {
+      getUserInfo();
+      getSystemInfo();
+      getWebStates();
+    });
 
     function updateBatteryStatus() {
       navigator.getBattery().then(function (battery) {
@@ -592,9 +592,7 @@
     } catch (error) {
       console.error(error);
     }
-
   </script>
-
 </body>
 
 </html>
