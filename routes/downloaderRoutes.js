@@ -5,7 +5,7 @@ const { tiktok } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
 const { facebook } = require('../scrapers/downloader/facebookScraper');
 const { twitter } = require('../scrapers/downloader/twitterScraper');
-const { instagram } = require('../scrapers/downloader/instagramDownloader');
+const { instagram } = require('../scrapers/downloader/InstagramScraper');
 
 
 
