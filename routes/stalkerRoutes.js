@@ -1,7 +1,7 @@
 const express = require('express');
 
 //import scrapers
-const { githubStalk } = require('../scrapers/stalker/githubStalker');
+const { gitstalk } = require('../scrapers/stalker/githubStalker');
 const { npmStalk } = require('../scrapers/stalker/npmStalker');
 const { igstalk } = require('../scrapers/stalker/instagramStalker');
 
@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 //github stalk route
-router.get('/githubstalk', async (req, res) => {
+router.get('/gitstalk', async (req, res) => {
     const username = req.query.username;
     if (!username) {
         return res.status(400).json({
@@ -25,7 +25,7 @@ router.get('/githubstalk', async (req, res) => {
     }
 
     try {
-        const result = await githubStalk(username);
+        const result = await gitstalk(username);
         res.json({
             Founder: "AHMMI-KUN",
             company: "Xlicon Botz Inc",
