@@ -5,6 +5,9 @@ const { tiktok } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
 const { facebook } = require('../scrapers/downloader/facebookScraper');
 const { twitter } = require('../scrapers/downloader/twitterScraper');
+const { instagram } = require('../scrapers/downloader/instagramDownloader');
+
+
 
 router.get('/tiktok', async (req, res) => {
     const { url } = req.query;
@@ -192,5 +195,36 @@ router.get('/twitter', async (req, res) => {
         });
     }
 });
+
+router.get('/instagram', async (req, res) => {
+    const { url } = req.query;
+    if (!url)
+        return res.status(400).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "URL is required" } }
+        });
+
+    try {
+        const result = await instagram(url);
+        res.json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: {
+                status: true,
+                data: result
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "Instagram downloader failed" } }
+        });
+    }
+});
+
+
 
 module.exports = router;
