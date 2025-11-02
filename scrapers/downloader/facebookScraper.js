@@ -1,7 +1,7 @@
 const cheerio = require("cheerio")
 const axios = require("axios")
 
-async function fbdown(url) {
+async function fbdl(url) {
  return new Promise(async (resolve, reject) => {
 let params = new URLSearchParams()
 params.append('URLz', url)
@@ -28,4 +28,4 @@ function fbreg(url) {
   const fbRegex = /(?:https?:\/\/)?(?:www\.)?(m\.facebook|facebook|fb)\.(com|me|watch)\/(?:(?:\w\.)*#!\/)?(?:groups\/)?(?:[\w\-\.]*\/)*([\w\-\.]*)/
   return fbRegex.test(url);
 }
-module.exports = {fbdown}
+module.exports = {fbdl}
