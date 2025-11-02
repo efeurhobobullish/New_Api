@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-async function githubStalk(user) {
+async function gitstalk(user) {
     return new Promise((resolve, reject) => {
         axios.get(`https://api.github.com/users/${user}`)
             .then(({ data }) => {
@@ -31,4 +31,4 @@ async function githubStalk(user) {
     });
 }
 
-module.exports = { githubStalk };
+module.exports = { gitstalk };
