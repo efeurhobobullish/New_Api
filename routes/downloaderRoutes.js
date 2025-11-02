@@ -3,6 +3,7 @@ const router = express.Router();
 
 const { ttsave } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
+const { fbdown } = require('../scrapers/downloader/facebookScraper');
 
 router.get('/tiktok', async (req, res) => {
     const { url } = req.query;
@@ -112,6 +113,44 @@ router.get('/ytmp4', async (req, res) => {
             Founder: "AHMMI-KUN",
             company: "Xlicon Botz Inc",
             data: { status: false, data: { title: "YouTube MP4 scraper failed" } }
+        });
+    }
+});
+
+
+router.get('/fbdown', async (req, res) => {
+    const { url } = req.query;
+    if (!url)
+        return res.status(400).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "URL is required" } }
+        });
+
+    try {
+        const result = await fbdown(url);
+        res.json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: {
+                status: true,
+                data: {
+                    title: result.title,
+                    description: result.desc,
+                    thumbnail: result.thumb,
+                    qualityLinks: {
+                        sd: result.sd,
+                        hd: result.hd || null
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "Facebook scraper failed" } }
         });
     }
 });
