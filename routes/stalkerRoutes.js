@@ -3,6 +3,8 @@ const express = require('express');
 //import scrapers
 const { githubStalk } = require('../scrapers/stalker/githubStalker');
 const { npmStalk } = require('../scrapers/stalker/npmStalker');
+const { igstalk } = require('../scrapers/downloader/instagramScraper');
+
 
 //create router
 const router = express.Router();
@@ -81,7 +83,34 @@ router.get('/npmstalk', async (req, res) => {
     }
 });
 
+router.get('/igstalk', async (req, res) => {
+    const { username } = req.query;
+    if (!username)
+        return res.status(400).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "Username is required" } }
+        });
 
+    try {
+        const result = await igstalk(username);
+        res.json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: {
+                status: true,
+                data: result
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "Instagram stalker failed" } }
+        });
+    }
+});
 
 module.exports = router;
 
