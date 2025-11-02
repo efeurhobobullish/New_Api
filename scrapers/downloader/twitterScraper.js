@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const qs = require("qs");
 
-async function twitterdl(link){
+async function twitter(link){
 	return new Promise((resolve, reject) => {
 		let config = {
 			'URL': link
@@ -29,4 +29,4 @@ async function twitterdl(link){
 	})
 }
 
-module.exports = {twitterdl}
+module.exports = {twitter}
