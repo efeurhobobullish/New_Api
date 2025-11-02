@@ -166,7 +166,7 @@ router.get('/twitter', async (req, res) => {
         });
 
     try {
-        const result = await twitterdl(url);
+        const result = await twitter(url);
         res.json({
             Founder: "AHMMI-KUN",
             company: "Xlicon Botz Inc",
