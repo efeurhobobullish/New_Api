@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { ttsave } = require('../scrapers/downloader/tiktokScraper');
+const { tiktok } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
-const { fbdl } = require('../scrapers/downloader/facebookScraper');
-const { twitterdl } = require('../scrapers/downloader/twitterScraper');
+const { facebook } = require('../scrapers/downloader/facebookScraper');
+const { twitter } = require('../scrapers/downloader/twitterScraper');
 
 router.get('/tiktok', async (req, res) => {
     const { url } = req.query;
@@ -16,7 +16,7 @@ router.get('/tiktok', async (req, res) => {
         });
 
     try {
-        const result = await ttsave.download(url);
+        const result = await tiktok.download(url);
         res.json({
             Founder: "AHMMI-KUN",
             company: "Xlicon Botz Inc",
@@ -119,7 +119,7 @@ router.get('/ytmp4', async (req, res) => {
 });
 
 
-router.get('/fbdown', async (req, res) => {
+router.get('/facebook', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
@@ -129,7 +129,7 @@ router.get('/fbdown', async (req, res) => {
         });
 
     try {
-        const result = await fbdown(url);
+        const result = await facebook(url);
         res.json({
             Founder: "AHMMI-KUN",
             company: "Xlicon Botz Inc",
@@ -156,7 +156,7 @@ router.get('/fbdown', async (req, res) => {
     }
 });
 
-router.get('/twitterdl', async (req, res) => {
+router.get('/twitter', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
