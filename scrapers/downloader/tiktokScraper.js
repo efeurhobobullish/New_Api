@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-const ttsave = {
+const tiktok = {
     download: async (url) => {
         const apiUrl = 'https://ttsave.app/download';
         const headers = {
@@ -19,7 +19,7 @@ const ttsave = {
         try {
             const response = await axios.post(apiUrl, data, { headers });
             const html = response.data;
-            const result = ttsave.extract(html);
+            const result = tiktok.extract(html);
             return result;
         } catch (error) {
             console.error('Error downloading video:', error);
@@ -49,4 +49,4 @@ const ttsave = {
     }
 };
 
-module.exports = { ttsave };
+module.exports = { tiktok };
