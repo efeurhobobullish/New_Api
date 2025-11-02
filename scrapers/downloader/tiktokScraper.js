@@ -13,7 +13,7 @@ const tiktok = {
 
         const data = {
             query: url,
-            language_id: "2"
+            language_id: "1"
         };
 
         try {
