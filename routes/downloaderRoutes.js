@@ -3,7 +3,8 @@ const router = express.Router();
 
 const { ttsave } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
-const { fbdown } = require('../scrapers/downloader/facebookScraper');
+const { fbdl } = require('../scrapers/downloader/facebookScraper');
+const { twitterdl } = require('../scrapers/downloader/twitterScraper');
 
 router.get('/tiktok', async (req, res) => {
     const { url } = req.query;
@@ -151,6 +152,43 @@ router.get('/fbdown', async (req, res) => {
             Founder: "AHMMI-KUN",
             company: "Xlicon Botz Inc",
             data: { status: false, data: { title: "Facebook scraper failed" } }
+        });
+    }
+});
+
+router.get('/twitterdl', async (req, res) => {
+    const { url } = req.query;
+    if (!url)
+        return res.status(400).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "URL is required" } }
+        });
+
+    try {
+        const result = await twitterdl(url);
+        res.json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: {
+                status: true,
+                data: {
+                    description: result.desc,
+                    thumbnail: result.thumb,
+                    downloadLinks: {
+                        video_hd: result.video_hd,
+                        video_sd: result.video_sd,
+                        audio: result.audio
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: { status: false, data: { title: "Twitter scraper failed" } }
         });
     }
 });
