@@ -3,7 +3,7 @@ const express = require('express');
 //import scrapers
 const { gitstalk } = require('../scrapers/stalker/githubStalker');
 const { npmStalk } = require('../scrapers/stalker/npmStalker');
-const { igstalk } = require('../scrapers/stalker/instagramStalker');
+const { igstalk } = require('../scrapers/stalker/InstagramStalker');
 
 
 //create router
