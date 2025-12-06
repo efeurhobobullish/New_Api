@@ -3,6 +3,7 @@ const express = require('express');
 //import scraper functions
 const { scrapeGoogle } = require('../scrapers/search/googleScraper');
 const { happymod } = require('../scrapers/search/happymodScraper');
+const { sswebSearch } = require('../scrapers/search/sswebScraper');
 
 
 //create a router
@@ -84,6 +85,38 @@ router.get('/happymod', async (req, res) => {
     }
 });
 
+// Route for SSWEB Screenshot
+router.get('/ssweb', async (req, res) => {
+    const targetUrl = req.query.url;
+    if (!targetUrl) {
+        return res.status(400).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: {
+                status: false,
+                message: "Query parameter 'url' is required",
+            },
+        });
+    }
+
+    try {
+        const imgBuffer = await sswebSearch(targetUrl);
+
+        // Set headers for image output
+        res.setHeader("Content-Type", "image/png");
+        res.send(imgBuffer);
+
+    } catch (error) {
+        res.status(500).json({
+            Founder: "AHMMI-KUN",
+            company: "Xlicon Botz Inc",
+            data: {
+                status: false,
+                message: error.message,
+            },
+        });
+    }
+});
 
 
 module.exports = router;
