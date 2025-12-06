@@ -1,9 +1,9 @@
 const express = require('express');
-
-//import scraper functions
 const { scrapeGoogle } = require('../scrapers/search/googleScraper');
 const { happymod } = require('../scrapers/search/happymodScraper');
 const { sswebSearch } = require('../scrapers/search/sswebScraper');
+const { sswebVid } = require('../scrapers/search/sswebVidScraper');
+
 
 
 //create a router
@@ -115,6 +115,25 @@ router.get('/ssweb', async (req, res) => {
                 message: error.message,
             },
         });
+    }
+});
+
+router.get('/sswebvid', async (req, res) => {
+    const targetUrl = req.query.url;
+
+    if (!targetUrl) {
+        return res.status(400).json({
+            status: false,
+            message: "Query parameter 'url' is required"
+        });
+    }
+
+    try {
+        const videoBuffer = await sswebVid(targetUrl);
+        res.setHeader("Content-Type", "video/mp4");
+        res.send(videoBuffer);
+    } catch (error) {
+        res.status(500).json({ status: false, message: error.message });
     }
 });
 
