@@ -1,10 +1,10 @@
 {
-  "name": "express-api",
+  "name": "empire-tech-api",
   "version": "1.0.0",
   "description": "express backend api",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start app.js --deep-monitoring --attach --name ahmmi-api-site",
+    "start": "pm2 start app.js --deep-monitoring --attach --name empire-tech-api",
     "dev": "nodemon app.js",
     "stop": "pm2 kill",
     "restart": "git pull && npm stop && npm start",
