@@ -8,7 +8,6 @@ const { twitter } = require('../scrapers/downloader/twitterScraper');
 const { instagram } = require('../scrapers/downloader/InstagramScraper');
 
 
-
 router.get('/tiktok', async (req, res) => {
     const { url } = req.query;
     if (!url)
@@ -27,17 +26,13 @@ router.get('/tiktok', async (req, res) => {
                 status: true,
                 data: {
                     title: result.username,
-                    uniqueId: result.uniqueId,
                     userHandle: result.userHandle,
                     userProfileImage: result.userProfileImage,
                     description: result.description,
                     views: result.views,
                     downloadLinks: {
                         noWatermark: result.downloadLinks.noWatermark,
-                        withWatermark: result.downloadLinks.withWatermark,
-                        audio: result.downloadLinks.audio,
-                        profileImage: result.downloadLinks.profileImage,
-                        coverImage: result.downloadLinks.coverImage
+                        audio: result.downloadLinks.audio
                     }
                 }
             }
