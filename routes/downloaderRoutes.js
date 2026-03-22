@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { tiktok } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
-const { facebook } = require('../scrapers/downloader/facebookScraper');
+const { fbdown } = require('../scrapers/downloader/facebookScraper');
 const { twitter } = require('../scrapers/downloader/twitterScraper');
 const { instagram } = require('../scrapers/downloader/InstagramScraper');
 
@@ -127,7 +127,7 @@ router.get('/facebook', async (req, res) => {
         });
 
     try {
-        const result = await facebook(url);
+        const result = await fbdown(url);
         res.json({
             Founder: "Empire Tech",
             company: "Empire Tech Ltd",
@@ -135,11 +135,10 @@ router.get('/facebook', async (req, res) => {
                 status: true,
                 data: {
                     title: result.title,
-                    description: result.desc,
-                    thumbnail: result.thumb,
+                    description: result.description,
                     qualityLinks: {
-                        sd: result.sd,
-                        hd: result.hd || null
+                        sd: result.sdLink,
+                        hd: result.hdLink || null
                     }
                 }
             }
