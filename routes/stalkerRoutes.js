@@ -15,8 +15,8 @@ router.get('/gitstalk', async (req, res) => {
     const username = req.query.username;
     if (!username) {
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: false,
                 message: "Query parameter 'username' is required",
@@ -27,8 +27,8 @@ router.get('/gitstalk', async (req, res) => {
     try {
         const result = await gitstalk(username);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: result,
@@ -36,8 +36,8 @@ router.get('/gitstalk', async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: false,
                 message: error.message,
@@ -52,8 +52,8 @@ router.get('/npmstalk', async (req, res) => {
     const packageName = req.query.packageName;
     if (!packageName) {
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: false,
                 message: "Query parameter 'packageName' is required",
@@ -64,8 +64,8 @@ router.get('/npmstalk', async (req, res) => {
     try {
         const result = await npmStalk(packageName);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: result,
@@ -73,8 +73,8 @@ router.get('/npmstalk', async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: false,
                 message: error.message,
@@ -87,16 +87,16 @@ router.get('/igstalk', async (req, res) => {
     const { username } = req.query;
     if (!username)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "Username is required" } }
         });
 
     try {
         const result = await igstalk(username);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: result
@@ -105,17 +105,11 @@ router.get('/igstalk', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "Instagram stalker failed" } }
         });
     }
 });
 
 module.exports = router;
-
-
-
-
-
-
