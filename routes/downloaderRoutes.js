@@ -13,16 +13,16 @@ router.get('/tiktok', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "URL is required" } }
         });
 
     try {
         const result = await tiktok.download(url);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: {
@@ -44,8 +44,8 @@ router.get('/tiktok', async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "TikTok scraper failed" } }
         });
     }
@@ -55,16 +55,16 @@ router.get('/ytmp3', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "URL is required" } }
         });
 
     try {
         const result = await ytmp3(url);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: {
@@ -76,8 +76,8 @@ router.get('/ytmp3', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "YouTube MP3 scraper failed" } }
         });
     }
@@ -87,16 +87,16 @@ router.get('/ytmp4', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "URL is required" } }
         });
 
     try {
         const result = await ytmp4(url);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: {
@@ -114,8 +114,8 @@ router.get('/ytmp4', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "YouTube MP4 scraper failed" } }
         });
     }
@@ -126,16 +126,16 @@ router.get('/facebook', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "URL is required" } }
         });
 
     try {
         const result = await facebook(url);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: {
@@ -152,8 +152,8 @@ router.get('/facebook', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "Facebook scraper failed" } }
         });
     }
@@ -163,16 +163,16 @@ router.get('/twitter', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "URL is required" } }
         });
 
     try {
         const result = await twitter(url);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: {
@@ -189,8 +189,8 @@ router.get('/twitter', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "Twitter scraper failed" } }
         });
     }
@@ -200,16 +200,16 @@ router.get('/instagram', async (req, res) => {
     const { url } = req.query;
     if (!url)
         return res.status(400).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "URL is required" } }
         });
 
     try {
         const result = await instagram(url);
         res.json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: {
                 status: true,
                 data: result
@@ -218,8 +218,8 @@ router.get('/instagram', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            Founder: "AHMMI-KUN",
-            company: "Xlicon Botz Inc",
+            Founder: "Empire Tech",
+            company: "Empire Tech Ltd",
             data: { status: false, data: { title: "Instagram downloader failed" } }
         });
     }
