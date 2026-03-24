@@ -4,7 +4,7 @@ const express = require('express');
 const { gitstalk } = require('../scrapers/stalker/githubStalker');
 const { npmStalk } = require('../scrapers/stalker/npmStalker');
 const { igstalk } = require('../scrapers/stalker/InstagramStalker');
-const { igstalk } = require('../scrapers/stalker/telegramStalker');
+const { tgstalk } = require('../scrapers/stalker/telegramStalker');
 
 //create router
 const router = express.Router();
@@ -136,7 +136,7 @@ router.get('/tgstalk', async (req, res) => {
         res.status(500).json({
             Founder: "Empire Tech",
             company: "Empire Tech Ltd",
-            data: { status: false, data: { title: "Instagram stalker failed" } }
+            data: { status: false, data: { title: "Telegram stalker failed" } }
         });
     }
 });
