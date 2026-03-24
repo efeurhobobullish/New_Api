@@ -5,7 +5,7 @@ const { tiktok } = require('../scrapers/downloader/tiktokScraper');
 const { ytmp3, ytmp4 } = require('../scrapers/downloader/youtubeScraper');
 const { fbdown } = require('../scrapers/downloader/facebookScraper');
 const { twitter } = require('../scrapers/downloader/twitterScraper');
-const { instagram } = require('../scrapers/downloader/InstagramScraper');
+const { igdl } = require('../scrapers/downloader/InstagramScraper');
 
 
 router.get('/tiktok', async (req, res) => {
@@ -200,7 +200,7 @@ router.get('/instagram', async (req, res) => {
         });
 
     try {
-        const result = await instagram(url);
+        const result = await igdl(url);
         res.json({
             Founder: "Empire Tech",
             company: "Empire Tech Ltd",
